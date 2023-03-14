@@ -14,7 +14,7 @@ func main() {
 	router.GET("/hello", HelloWorld)
 
 	// PORT
-	router.Run("localhost:8080")
+	router.Run(":7000")
 }
 
 func HelloWorld(c *gin.Context) {
@@ -22,4 +22,3 @@ func HelloWorld(c *gin.Context) {
 		"Hello": "World",
 	})
 }
-
