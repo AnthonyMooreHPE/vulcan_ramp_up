@@ -29,12 +29,12 @@ Docker is an open platform for developing, shipping, and running applications. D
 
 Docker provides the ability to package and run an application in a loosely isolated environment called a container. The isolation and security allows you to run many containers simultaneously on a given host. 
 
-## Build a Container
+### Build a Container
 ```bash
 docker build -t go-gin-docker ./vulcan_ramp_up
 ```
 
-## Run a Container
+### Run a Container
 ```bash
 docker run -p 7000:7000 go-gin-docker
 ```
