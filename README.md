@@ -39,3 +39,19 @@ docker build -t go-gin-docker ./vulcan_ramp_up
 docker run -p 7000:7000 go-gin-docker
 ```
 
+## What is Kubernetes?
+Kubernetes is an open source container orchestration platform that automates many of the manual processes involved in deploying, managing, and scaling containerized applications.
+
+Users can cluster together groups of hosts running containers, and Kubernetes helps you easily and efficiently manage those clusters.
+
+### Create a Kubernetes Cluster
+```bash
+k3d cluster create --config k3d.yaml
+```
+
+### Deploy hello-world container image to the cluster
+```bash
+kubectl apply --filename k8s/
+```
+
+
