@@ -46,6 +46,7 @@ Users can cluster together groups of hosts running containers, and Kubernetes he
 
 ### Create a Kubernetes Cluster
 ```bash
+cd vulcan_ramp_up
 k3d cluster create --config k3d.yaml
 ```
 
