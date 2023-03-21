@@ -36,7 +36,7 @@ docker build -t go-gin-docker ./vulcan_ramp_up
 
 ### Run a Container
 ```bash
-docker run -p 7000:7000 go-gin-docker
+docker run -p 80:80 go-gin-docker
 ```
 
 ## What is Kubernetes?
@@ -49,7 +49,7 @@ Users can cluster together groups of hosts running containers, and Kubernetes he
 k3d cluster create --config k3d.yaml
 ```
 
-### Deploy hello-world container image to the cluster
+### Deploy hello-world to the cluster
 ```bash
 kubectl apply --filename k8s/
 ```
