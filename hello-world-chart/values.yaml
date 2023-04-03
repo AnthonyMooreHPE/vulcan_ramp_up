@@ -1,0 +1,7 @@
+image:
+  repository: "antomoore/go-gin-docker"
+
+service:
+  port: 80
+  targetPort: 80
+  

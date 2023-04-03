@@ -1,0 +1,73 @@
+---
+# Source: hello-world-chart/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-chart
+  labels:
+    app: hello-world-chart
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: hello-world-chart
+---
+# Source: hello-world-chart/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-hello-world-chart
+  labels:
+    app: hello-world-chart
+spec:
+  selector:
+    matchLabels:
+      app: hello-world-chart
+  template:
+    metadata:
+      labels:
+        app: hello-world-chart
+    spec:
+      containers:
+      - name: hello-world-chart
+        image: antomoore/go-gin-docker
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 80m
+            memory: 128Mi
+---
+# Source: hello-world-chart/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-world-chart
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hello-world-chart
+            port:
+              number: 80

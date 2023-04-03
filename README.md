@@ -8,7 +8,7 @@ $ go run hello.go
 
 ### GET request
 ```bash
-$ curl http://localhost:7000/hello
+$ curl http://localhost/hello
 ```
 
 ### Run Unit Testing
@@ -46,13 +46,20 @@ Users can cluster together groups of hosts running containers, and Kubernetes he
 
 ### Create a Kubernetes Cluster
 ```bash
-cd vulcan_ramp_up
-k3d cluster create --config k3d.yaml
+k3d cluster create --config ./k3d/cluster_create.yaml
 ```
 
 ### Deploy hello-world to the cluster
 ```bash
 kubectl apply --filename k8s/
+```
+
+## What is Helm?
+Helm is a Kubernetes deployment tool for automating creation, packaging, configuration, and deployment of applications and services to Kubernetes clusters.
+
+### Install using Helm Chart
+```bash
+helm install hello-world-chart .
 ```
 
 
